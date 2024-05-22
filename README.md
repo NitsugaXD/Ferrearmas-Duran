@@ -8,8 +8,8 @@ Esta API permite consultar información detallada de los productos disponibles e
 
 ### Endpoints Disponibles
 
-- **Obtener Lista de Productos**: `GET /api/productos/`
-- **Obtener Detalles de un Producto por Código**: `GET /api/productos/<codigo>/`
+- **Obtener Lista de Productos**: `GET /api_productos/productos/`
+- **Obtener Detalles de un Producto por Código**: `GET /api_productos/productos/<codigo>/`
 
 ### Parámetros de Consulta
 
@@ -21,14 +21,14 @@ Esta API permite consultar información detallada de los productos disponibles e
 
 1. Abre Postman.
 2. Selecciona el método GET.
-3. Ingresa la URL: `http://localhost:8000/api/productos/`.
+3. Ingresa la URL: `http://localhost:8000/api_productos/productos/`.
 4. Haz clic en "Send".
 
 #### Obtener Detalles de un Producto por Código
 
 1. Abre Postman.
 2. Selecciona el método GET.
-3. Ingresa la URL con el código del producto deseado, por ejemplo: `http://localhost:8000/api/productos/FER-12345/`.
+3. Ingresa la URL con el código del producto deseado, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
 4. Haz clic en "Send".
 
 ## API de Gestión de Productos
@@ -37,9 +37,9 @@ Esta API permite crear, editar y eliminar productos en Ferremas.
 
 ### Endpoints Disponibles
 
-- **Crear un Producto**: `POST /api/productos/`
-- **Editar un Producto**: `PUT /api/productos/<codigo>/`
-- **Eliminar un Producto**: `DELETE /api/productos/<codigo>/`
+- **Crear un Producto**: `POST /api_productos/productos/`
+- **Editar un Producto**: `PUT /api_productos/productos/<codigo>/`
+- **Eliminar un Producto**: `DELETE /api_productos/productos/<codigo>/`
 
 ### Parámetros de Solicitud
 
@@ -51,7 +51,7 @@ Esta API permite crear, editar y eliminar productos en Ferremas.
 
 1. Abre Postman.
 2. Selecciona el método POST.
-3. Ingresa la URL: `http://localhost:8000/api/productos/`.
+3. Ingresa la URL: `http://localhost:8000/api_productos/productos/`.
 4. En la sección "Body", selecciona "raw" y "JSON".
 5. Ingresa los detalles del producto que deseas crear en formato JSON.
 6. Haz clic en "Send".
@@ -60,7 +60,7 @@ Esta API permite crear, editar y eliminar productos en Ferremas.
 
 1. Abre Postman.
 2. Selecciona el método PUT.
-3. Ingresa la URL con el código del producto que deseas editar, por ejemplo: `http://localhost:8000/api/productos/FER-12345/`.
+3. Ingresa la URL con el código del producto que deseas editar, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
 4. En la sección "Body", selecciona "raw" y "JSON".
 5. Ingresa los nuevos detalles del producto en formato JSON.
 6. Haz clic en "Send".
@@ -69,7 +69,7 @@ Esta API permite crear, editar y eliminar productos en Ferremas.
 
 1. Abre Postman.
 2. Selecciona el método DELETE.
-3. Ingresa la URL con el código del producto que deseas eliminar, por ejemplo: `http://localhost:8000/api/productos/FER-12345/`.
+3. Ingresa la URL con el código del producto que deseas eliminar, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
 4. Haz clic en "Send".
 
 ## API de Carro de Compras
@@ -78,7 +78,7 @@ Esta API permite agregar productos al carro de compras en Ferremas.
 
 ### Endpoints Disponibles
 
-- **Crear un Carro de Compras**: `POST /api/carro/`
+- **Crear un Carro de Compras**: `POST /api_productos/carro/`
 
 ### Parámetros de Solicitud
 
@@ -90,7 +90,7 @@ Esta API permite agregar productos al carro de compras en Ferremas.
 
 1. Abre Postman.
 2. Selecciona el método POST.
-3. Ingresa la URL: `http://localhost:8000/api/carro/`.
+3. Ingresa la URL: `http://localhost:8000/api_productos/carro/`.
 4. En la sección "Body", selecciona "raw" y "JSON".
 5. Ingresa el cuerpo de la solicitud con los IDs de los productos que deseas agregar al carro, por ejemplo:
 
