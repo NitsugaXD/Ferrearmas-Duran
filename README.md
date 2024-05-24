@@ -17,7 +17,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
    ```bash
    python -m venv venv
    ```
-````
+
 
 2. Activa el entorno virtual:
 
