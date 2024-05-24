@@ -1,4 +1,4 @@
-````markdown
+
 # Documentación de la API
 
 ## Introducción
