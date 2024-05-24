@@ -1,138 +1,307 @@
-# API de Ferremas
+````markdown
+# Documentación de la API
 
-Esta API proporciona endpoints para interactuar con productos y carros de compras en la tienda de Ferremas.
+## Introducción
 
-## API de Consulta de Productos
+Este documento describe los endpoints disponibles en la API, los parámetros necesarios para cada uno, los verbos HTTP utilizados y ejemplos de las respuestas esperadas.
 
-Esta API permite consultar información detallada de los productos disponibles en Ferremas.
+## Requisitos
 
-### Endpoints Disponibles
+Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
 
-- **Obtener Lista de Productos**: `GET /api_productos/productos/`
-- **Obtener Detalles de un Producto por Código**: `GET /api_productos/productos/<codigo>/`
+- Python
 
-### Parámetros de Consulta
+## Instalación
 
-- `<codigo>`: Código único del producto que se desea consultar.
+1. Crea un entorno virtual:
+   ```bash
+   python -m venv venv
+   ```
+````
 
-### Ejemplo de Uso en Postman
+2. Activa el entorno virtual:
 
-#### Obtener Lista de Productos
+   - En Windows:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+   - En macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
 
-1. Abre Postman.
-2. Selecciona el método GET.
-3. Ingresa la URL: `http://localhost:8000/api_productos/productos/`.
-4. Haz clic en "Send".
+3. Instala las dependencias:
 
-#### Obtener Detalles de un Producto por Código
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Abre Postman.
-2. Selecciona el método GET.
-3. Ingresa la URL con el código del producto deseado, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
-4. Haz clic en "Send".
+4. Aplica las migraciones:
 
-## API de Gestión de Productos
+   ```bash
+   python manage.py migrate
+   ```
 
-Esta API permite crear, editar y eliminar productos en Ferremas.
+5. Ejecuta el servidor de desarrollo:
+   ```bash
+   python manage.py runserver
+   ```
 
-### Endpoints Disponibles
+## Endpoints Disponibles
 
-- **Crear un Producto**: `POST /api_productos/productos/`
-- **Editar un Producto**: `PUT /api_productos/productos/<codigo>/`
-- **Eliminar un Producto**: `DELETE /api_productos/productos/<codigo>/`
+### 1. Crear y Listar Productos
 
-### Parámetros de Solicitud
+#### Crear Producto
 
-- `<codigo>`: Código único del producto que se desea editar o eliminar.
+- **Endpoint:** `/api/productos/`
+- **Método HTTP:** `POST`, `GET`
 
-### Ejemplo de Uso en Postman
+**Solicitud:**
 
-#### Crear un Producto
+```http
+POST /api/productos/
+Content-Type: application/json
 
-1. Abre Postman.
-2. Selecciona el método POST.
-3. Ingresa la URL: `http://localhost:8000/api_productos/productos/`.
-4. En la sección "Body", selecciona "raw" y "JSON".
-5. Ingresa los detalles del producto que deseas crear en formato JSON.
-6. Haz clic en "Send".
-
-#### Editar un Producto
-
-1. Abre Postman.
-2. Selecciona el método PUT.
-3. Ingresa la URL con el código del producto que deseas editar, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
-4. En la sección "Body", selecciona "raw" y "JSON".
-5. Ingresa los nuevos detalles del producto en formato JSON.
-6. Haz clic en "Send".
-
-#### Eliminar un Producto
-
-1. Abre Postman.
-2. Selecciona el método DELETE.
-3. Ingresa la URL con el código del producto que deseas eliminar, por ejemplo: `http://localhost:8000/api_productos/productos/FER-12345/`.
-4. Haz clic en "Send".
-
-## API de Carro de Compras
-
-Esta API permite agregar productos al carro de compras en Ferremas.
-
-### Endpoints Disponibles
-
-- **Crear un Carro de Compras**: `POST /api_productos/carro/`
-
-### Parámetros de Solicitud
-
-- `productos`: Lista de IDs de productos que se desean agregar al carro.
-
-### Ejemplo de Uso en Postman
-
-#### Crear un Carro de Compras
-
-1. Abre Postman.
-2. Selecciona el método POST.
-3. Ingresa la URL: `http://localhost:8000/api_productos/carro/`.
-4. En la sección "Body", selecciona "raw" y "JSON".
-5. Ingresa el cuerpo de la solicitud con los IDs de los productos que deseas agregar al carro, por ejemplo:
-
-```json
 {
-    "productos": [1, 2, 3]
+    "codigo": 1,
+    "marca": "Bosch",
+    "nombre": "Taladro Percutor Bosch",
+    "precio": 89090,
+    "stock": 15
 }
 ```
 
-6. Haz clic en "Send".
+**Respuesta:**
 
-## Ejemplo de Productos
-
-1. **Taladro Percutor Bosch**
 ```json
 {
-    "codigo": "FER-12345",
+  "codigo": 1,
+  "marca": "Bosch",
+  "nombre": "Taladro Percutor Bosch",
+  "precio": 89090,
+  "stock": 15
+}
+```
+
+#### Listar Productos
+
+**Solicitud:**
+
+```http
+GET /api/productos/
+```
+
+**Respuesta:**
+
+```json
+[
+    {
+        "codigo": 1,
+        "marca": "Bosch",
+        "nombre": "Taladro Percutor Bosch",
+        "precio": 89090,
+        "stock": 15
+    },
+    ...
+]
+```
+
+### Listar Producto por ID
+
+**Solicitud:**
+
+```http
+GET /api/productos/1
+```
+
+### 2. Detalle, Actualizar y Eliminar Producto
+
+- **Endpoint:** `/api/productos/<str:codigo>/`
+- **Método HTTP:** `GET`, `PUT`, `DELETE`
+
+#### Detalle de Producto
+
+**Solicitud:**
+
+```http
+GET /api/productos/1/
+```
+
+**Respuesta:**
+
+```json
+{
+  "codigo": 1,
+  "marca": "Bosch",
+  "nombre": "Taladro Percutor Bosch",
+  "precio": 89090,
+  "stock": 15
+}
+```
+
+#### Actualizar Producto
+
+**Solicitud:**
+
+```http
+PUT /api/productos/1/
+Content-Type: application/json
+
+{
+    "codigo": 1,
     "marca": "Bosch",
     "nombre": "Taladro Percutor Bosch",
-    "precio": 89090.99,
+    "precio": 85000,
     "stock": 10
 }
 ```
 
-2. **Set de Destornilladores Stanley (6 piezas)**
+**Respuesta:**
+
 ```json
 {
-    "codigo": "FER-67890",
-    "marca": "Stanley",
-    "nombre": "Set de Destornilladores Stanley (6 piezas)",
-    "precio": 25999.99,
-    "stock": 20
+  "codigo": 1,
+  "marca": "Bosch",
+  "nombre": "Taladro Percutor Bosch",
+  "precio": 85000,
+  "stock": 10
 }
 ```
 
-3. **Bolsa de Cemento CEMEX (50 kg)**
-```json
+#### Eliminar Producto
+
+**Solicitud:**
+
+```http
+DELETE /api/productos/1/
+```
+
+**Respuesta:**
+
+```http
+# Ejecutar Listar Productos para comprobar cambios
+```
+
+### 3. Agregar Productos al Carro
+
+- **Endpoint:** `/api/carro/productos/`
+- **Método HTTP:** `POST`
+
+#### Agregar Producto al Carro
+
+**Solicitud:**
+
+```http
+POST /api/carro/productos/
+Content-Type: application/json
+
 {
-    "codigo": "FER-24680",
-    "marca": "CEMEX",
-    "nombre": "Bolsa de Cemento CEMEX (50 kg)",
-    "precio": 12499.99,
-    "stock": 50
+    "codigo": 1,
+    "cantidad": 5
 }
 ```
+
+**Respuesta:**
+
+```json
+{
+  "mensaje": "Producto 'Taladro Percutor Bosch' agregado correctamente al carro."
+}
+```
+
+### 4. Detalle del Carro
+
+- **Endpoint:** `/api/carro/detalle/`
+- **Método HTTP:** `GET`
+
+#### Obtener Detalle del Carro
+
+**Solicitud:**
+
+```http
+GET /api/carro/detalle/
+```
+
+**Respuesta:**
+
+```json
+{
+  "productos": [
+    {
+      "nombre": "Taladro Percutor Bosch",
+      "precio": 89090,
+      "cantidad": 5
+    }
+  ],
+  "total": 445450
+}
+```
+
+### 5. Eliminar Producto del Carro
+
+- **Endpoint:** `/api/carro/productos/<int:producto_codigo>/`
+- **Método HTTP:** `DELETE`
+
+#### Eliminar Producto del Carro
+
+**Solicitud:**
+
+```http
+DELETE /api/carro/productos/1/
+```
+
+**Respuesta:**
+
+```json
+{
+  "mensaje": "Producto 'Taladro Percutor Bosch' eliminado correctamente del carro."
+}
+```
+
+### 6. Pagar y Finalizar el Carro
+
+- **Endpoint:** `/api/carro/finalizar/`
+- **Método HTTP:** `POST`
+
+#### Pagar y Finalizar el Carro
+
+**Solicitud:**
+
+```http
+POST /api/carro/finalizar/
+```
+
+**Respuesta:**
+
+```json
+{
+  "mensaje": "Carro pagado y pedido finalizado correctamente.",
+  "total": 445450,
+  "carro": [
+    {
+      "nombre": "Taladro Percutor Bosch",
+      "precio": 89090,
+      "cantidad": 5
+    }
+  ]
+}
+```
+
+### Resumen de Endpoints
+
+| Endpoint                                      | Método HTTP | Descripción                 |
+| --------------------------------------------- | ----------- | --------------------------- |
+| `/api/productos/`                             | `GET`       | Listar productos            |
+| `/api/productos/`                             | `POST`      | Crear producto              |
+| `/api/productos/<str:codigo>/`                | `GET`       | Detalle de producto         |
+| `/api/productos/<str:codigo>/`                | `PUT`       | Actualizar producto         |
+| `/api/productos/<str:codigo>/`                | `DELETE`    | Eliminar producto           |
+| `/api/carro/productos/`                       | `POST`      | Agregar producto al carro   |
+| `/api/carro/detalle/`                         | `GET`       | Obtener detalle del carro   |
+| `/api/carro/productos/<int:producto_codigo>/` | `DELETE`    | Eliminar producto del carro |
+| `/api/carro/finalizar/`                       | `POST`      | Pagar y finalizar el carro  |
+
+## Notas
+
+- El ID del carro se asume como 1 en todos los casos.
+- Los productos eliminados del carro no se pueden recuperar, y el stock se actualiza automáticamente cuando se paga y finaliza el pedido.
