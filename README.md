@@ -102,16 +102,8 @@ GET /api/productos/
         "precio": 89090,
         "stock": 15
     },
-    ...
+    
 ]
-```
-
-### Listar Producto por ID
-
-**Solicitud:**
-
-```http
-GET /api/productos/1
 ```
 
 ### 2. Detalle, Actualizar y Eliminar Producto
