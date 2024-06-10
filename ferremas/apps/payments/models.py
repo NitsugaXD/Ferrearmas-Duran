@@ -8,5 +8,8 @@ class Payment(models.Model):
     fecha_pago = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    class Meta:
+        app_label = 'payments'
+        
     def __str__(self):
         return f"Pago {self.id} - Pedido {self.pedido.id}"

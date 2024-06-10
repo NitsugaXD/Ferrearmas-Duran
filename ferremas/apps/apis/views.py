@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from apps.products.models import Producto
+
+def product_form(request):
+    return render(request, 'product_form.html')
 
 
-def product_list(request):
-    productos = Producto.objects.all()
-    return render(request, 'product_list.html', {'productos': productos})
+def product_list_view(request):
+    return render(request, 'product_list.html')
 
+def update_product_form(request):
+    return render(request, 'update_product.html')

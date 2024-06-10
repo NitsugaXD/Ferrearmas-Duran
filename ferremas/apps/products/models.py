@@ -7,5 +7,7 @@ class Producto(models.Model):
     precio = models.IntegerField()
     stock = models.IntegerField()
 
+    class Meta:
+        app_label = 'products'
     def __str__(self):
         return self.nombre

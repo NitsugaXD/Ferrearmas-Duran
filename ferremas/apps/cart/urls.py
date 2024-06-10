@@ -2,6 +2,6 @@ from django.urls import path
 from .views import AgregarProductosAlCarro, CarroDetail
 
 urlpatterns = [
-    path('productos/', AgregarProductosAlCarro.as_view(), name='agregar-productos-carro'),
-    path('detalle/', CarroDetail.as_view(), name='carro-detalle'),
+    path('agregar-producto/', AgregarProductosAlCarro.as_view(), name='agregar-producto'),
+    path('carro/', CarroDetail.as_view(), name='carro-detail'),
 ]

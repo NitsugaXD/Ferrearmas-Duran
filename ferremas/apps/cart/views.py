@@ -22,9 +22,7 @@ class AgregarProductosAlCarro(APIView):
                 return Response({"error": f"Producto con código {codigo} no existe."}, status=status.HTTP_404_NOT_FOUND)
 
             carro_producto, created = CarroProducto.objects.get_or_create(carro=carro, producto=producto, defaults={'cantidad': cantidad})
-            if created:
-                carro_producto.cantidad = cantidad
-            else:
+            if not created:
                 carro_producto.cantidad += cantidad
             carro_producto.save()
 

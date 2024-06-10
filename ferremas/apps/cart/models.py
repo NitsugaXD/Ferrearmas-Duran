@@ -6,6 +6,9 @@ class Carro(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     productos = models.ManyToManyField(Producto, through='CarroProducto')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        app_label = 'cart'
 
 class CarroProducto(models.Model):
     carro = models.ForeignKey(Carro, on_delete=models.CASCADE)
@@ -13,4 +16,5 @@ class CarroProducto(models.Model):
     cantidad = models.IntegerField()
 
     class Meta:
+        app_label = 'cart'
         unique_together = ('carro', 'producto')

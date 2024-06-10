@@ -3,7 +3,7 @@ from .models import Carro, CarroProducto
 from apps.products.serializers import ProductoSerializer
 
 class CarroProductoSerializer(serializers.ModelSerializer):
-    codigo = serializers.ReadOnlyField(source='producto.codigo')
+    codigo = serializers.CharField(write_only=True)  # Add this line
     nombre = serializers.ReadOnlyField(source='producto.nombre')
     precio = serializers.ReadOnlyField(source='producto.precio')
 

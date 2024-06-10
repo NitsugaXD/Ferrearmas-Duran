@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-{%load  static%}
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend para API Ferremas</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Frontend para API Ferremas</h1>
+    <h1>Lista de Productos</h1>
     <div id="product-list">
         <!-- Aquí se mostrará la lista de productos -->
     </div>
-    <div id="cart">
-        <!-- Aquí se mostrará el carrito de compras -->
-    </div>
 
-    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static 'js/product_list.js' %}"></script>
 </body>
 </html>
