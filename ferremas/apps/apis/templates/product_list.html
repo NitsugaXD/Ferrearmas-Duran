@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <h1>Lista de Productos</h1>
-    <div id="product-list">
-        <!-- Aquí se mostrará la lista de productos -->
+    <div id="products">
+        <h2>Productos</h2>
+        <div id="productList"></div>
     </div>
-
-    <script src="{% static 'js/product_list.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 </html>

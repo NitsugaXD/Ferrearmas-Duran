@@ -1,11 +1,11 @@
 from rest_framework import generics
-from .models import Producto
-from .serializers import ProductoSerializer
+from apps.products.models import Producto
+from apps.products.serializers import ProductoSerializer
 
-class ProductoListCreate(generics.ListCreateAPIView):
+class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
-class ProductoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class ProductDetailAPIView(generics.RetrieveDestroyAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer

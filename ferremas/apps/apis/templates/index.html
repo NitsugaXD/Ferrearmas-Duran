@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div id="register">
+        <h2>Registro</h2>
+        <input type="text" id="reg_username" placeholder="Username">
+        <input type="email" id="reg_email" placeholder="Email">
+        <input type="password" id="reg_password" placeholder="Password">
+        <button onclick="register()">Registrar</button>
+        <div id="registerError" class="error"></div>
+    </div>
+
+    <div id="login" style="display:none;">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div id="loginError" class="error"></div>
+    </div>
+
+    <div id="products" style="display:none;">
+        <h2>Productos</h2>
+        <div id="productList"></div>
+    </div>
+
+    <div id="cart" style="display:none;">
+        <h2>Carrito</h2>
+        <div id="cartItems"></div>
+        <button onclick="checkout()">Pagar</button>
+    </div>
+
+    <div id="orders" style="display:none;">
+        <h2>Mis Compras</h2>
+        <div id="orderList"></div>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

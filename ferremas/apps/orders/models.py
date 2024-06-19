@@ -15,7 +15,7 @@ class Pedido(models.Model):
     def __str__(self):
         return f"Pedido {self.id}"
 
-class PedidoProducto(models.Model):  # Renamed to avoid conflicts
+class PedidoProducto(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
@@ -23,4 +23,4 @@ class PedidoProducto(models.Model):  # Renamed to avoid conflicts
     class Meta:
         app_label = 'orders'
         unique_together = ('pedido', 'producto')
-        db_table = 'orders_pedido_producto'  # Specify a custom table name to avoid clashes
+        db_table = 'orders_pedido_producto'
