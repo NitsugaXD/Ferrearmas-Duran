@@ -1,5 +1,3 @@
-Entendido, aquí tienes un ejemplo de documentación para tu proyecto:
-
 # Documentación de la API
 
 ## Introducción
