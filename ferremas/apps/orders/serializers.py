@@ -1,10 +1,7 @@
 from rest_framework import serializers
-from .models import Pedido
-from apps.products.serializers import ProductoSerializer
+from .models import Orden
 
-class PedidoSerializer(serializers.ModelSerializer):
-    productos = ProductoSerializer(many=True)
-
+class OrdenSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pedido
-        fields = ['id', 'fecha_creacion', 'productos', 'total', 'pagado']
+        model = Orden
+        fields = '__all__'

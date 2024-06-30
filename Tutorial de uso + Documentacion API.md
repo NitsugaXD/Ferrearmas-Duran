@@ -3,7 +3,7 @@
 
 ## Introducción
 
-Este documento es un paso a paso para levantar el entorno virutal, crear las tablas localmente, describe los endpoints disponibles en la API, los parámetros necesarios para cada uno, los verbos HTTP utilizados y ejemplos de las respuestas esperadas.
+Este documento es un paso a paso para levantar el entorno virutal, crear las tablas localmente, describe los endpoints disponibles en la API, los parámetros necesarios para cada uno, los verbos HTTP utilizados y ejemplos de las respuestas esperadas y la realizacion de las 32 pruebas unitarias y de integracion.
 
 ## Requisitos
 
@@ -40,7 +40,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
 
    ```bash
    cd ferremas
-   python manage.py makemigrations api
+   python manage.py makemigrations authentication, cart, inventory, orders, payments, products, users
    python manage.py migrate
    ```
 
