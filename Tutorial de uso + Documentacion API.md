@@ -40,6 +40,8 @@ Este documento describe cómo configurar el entorno, crear las tablas localmente
 4. **Aplica las migraciones:**
 
    ```bash
+   cd ferremas
+   python manage.py makemigrations apis authentication cart inventory orders payments products users
    python manage.py migrate
    ```
 
